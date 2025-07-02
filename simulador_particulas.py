@@ -5,7 +5,7 @@ import numpy as np
 import json
 pygame.init()
 
-with open('variaveis.json', 'r') as file:
+with open('config.json', 'r') as file:
     config = json.load(file)
 
 
@@ -24,12 +24,13 @@ class Particula:
         self.pos += self.vel*dt
 
 # Configurações da janela e de dados constantes
-largura = config.get('largura')
-altura = config.get('altura')
-raio = config.get('raio')
-n_particulas = config.get('n_particulas')
+largura = config.get("largura", 800)
+altura = config.get("altura", 600)
+raio = config.get("raio", 40)
+n_particulas = config.get("n_particulas", 90)
 vel_min, vel_max = 10, 500.0
 lista_particulas = []
+print(f"Configurações: largura={largura}, altura={altura}, raio={raio}, n_particulas={n_particulas}")
 # Define os atributos de cada partícula
 for i in range(n_particulas):
     while True:
@@ -99,7 +100,7 @@ while run:
 
             # Só calcula se as partículas estão "encostando" ou se sobrepondo
             # Calcula o versor normal e tangencial à direção entre as partículas
-            if dist <= 2 * raio:
+            if dist <= 2 * raio and dist != 0:
                 n_uvector = n_direction / dist
                 t_uvector = np.array([-n_uvector[1], n_uvector[0]])
 
