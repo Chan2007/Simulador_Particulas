@@ -6,7 +6,7 @@ import json
 pygame.init()
 
 with open('variaveis.json', 'r') as file:
-    variaveis = json.load(file)
+    config = json.load(file)
 
 
 class Particula:
@@ -24,10 +24,10 @@ class Particula:
         self.pos += self.vel*dt
 
 # Configurações da janela e de dados constantes
-largura = variaveis.get('largura')
-altura = variaveis.get('altura')
-raio = variaveis.get('raio')
-n_particulas = variaveis.get('n_particulas')
+largura = config.get('largura')
+altura = config.get('altura')
+raio = config.get('raio')
+n_particulas = config.get('n_particulas')
 vel_min, vel_max = 10, 500.0
 lista_particulas = []
 # Define os atributos de cada partícula
