@@ -1,6 +1,6 @@
 {
     "largura": 1440,
     "altura": 720,
-    "raio": 50,
-    "n_particulas": 15
+    "raio": 25,
+    "n_particulas": 25
 }
